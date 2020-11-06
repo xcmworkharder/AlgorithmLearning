@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
@@ -184,11 +185,48 @@ bool specialSort(vector<int>& a, vector<int>& b) {
     }
 }
 
-
+int left_bound(vector<int>& arr, int target) {
+    int lo = 0, hi = arr.size();
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (arr[mid] < target) {
+            lo = mid + 1;
+        } else {
+            hi = mid;
+        }
+        return lo;
+    }
+}
 
 int main() {
 
+    string S{"abcde"};
+    vector<string> words = {"a", "bb", "acd", "ace"};
+//    unordered_map<char, vector<int>> sMap;
+//    for (int i = 0; i < str.size(); ++i) {
+//        sMap[str[i]].push_back(i);
+//    }
+//    for (auto& map : sMap) {
+//        cout << map.first << ": {";
+//        for (auto v : map.second) {
+//            cout << v << ",";
+//        }
+//        cout << "}" << endl;
+//    }
 
+    int res = 0, j;
+    for (int i = 0; i < words.size(); i ++) {
+        int position = -1;
+        for (j = 0; j < words[i].size(); j ++) {
+            position = S.find_first_of(words[i][j], position + 1); // 从下标position + 1开始遍历
+            if (position == -1) break;  //若未找到弹出
+        }
+        if (j == words[i].length()) res ++; //表示str已全部被遍历了，则为其子串
+    }
+    cout << res << endl;
+
+//    vector<int> arr{1, 3, 3, 5, 6};
+//    cout << lower_bound(arr.begin(), arr.end(), 5) - arr.begin() << endl;
 
 //    vector<vector<int>> arr{{1, 2}, {2, 3}, {3, 4}, {1, 3}};
 //    sort(arr.begin(), arr.end(), specialSort);

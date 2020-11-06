@@ -153,15 +153,15 @@ void bubbleSort(vector<int>& arr) {
 
 int main() {
 
-    vector<int> arr{30, 10000, 1000, 3, 2000, 5, 4, 6};
-    //mergeSort(arr);
-    //quickSort(arr);
-    //insertSort(arr, 1, 3);
-    //selSort(arr);
-    bubbleSort(arr);
-    for (auto& a : arr) {
-        cout << a << " ";
-    }
+//    vector<int> arr{30, 10000, 1000, 3, 2000, 5, 4, 6};
+//    //mergeSort(arr);
+//    //quickSort(arr);
+//    //insertSort(arr, 1, 3);
+//    //selSort(arr);
+//    bubbleSort(arr);
+//    for (auto& a : arr) {
+//        cout << a << " ";
+//    }
 
     return 0;
 }
